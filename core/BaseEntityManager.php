@@ -40,7 +40,7 @@ class BaseEntityManager {
    * @throws \Exception
    */
   public function edit ($id, $fields) {
-    $entity = $this->getById($id);
+    $entity = $this->getByField('id', $id);
     if (!$entity) throw new \Exception('Entity not found');
     foreach ($fields as $field => $value) {
       $entity->$field = $value;
@@ -68,12 +68,15 @@ class BaseEntityManager {
   }
 
   /**
-   * @param int $id
+   * @param string $field
+   * @param mixed $value
+   * @param bool $rawData
    * @return BaseEntity
    */
-  public function getById ($id) {
-    $where = array('id' => $id);
+  public function getByField ($field, $value, $rawData = false) {
+    $where = array($field => $value);
     $data = $this->bd->select($where);
+    if ($rawData) return $data;
     return new $this->Entity($this, $data);
   }
 

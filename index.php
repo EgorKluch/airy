@@ -9,6 +9,8 @@ define('ROOT_DIR', __DIR__ . '/');
 require 'vendor/autoload.php';
 require 'core/SlimExtension.php';
 
+session_start();
+
 $app = new SlimExtension();
 
 # Подгружаем Middleware класс для обработки ошибок
