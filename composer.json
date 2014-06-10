@@ -7,6 +7,7 @@
   "homepage": "https://github.com/EgorKluch/php-framework",
   "require": {
     "slim/slim": "2.*",
-    "egorkluch/mysql-query-builder": "0.3"
+    "egorkluch/mysql-query-builder": "dev-master",
+    "egorkluch/php-access-manager": "dev-master"
   }
 }
