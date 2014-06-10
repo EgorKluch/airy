@@ -33,16 +33,39 @@ class BaseEntity {
    * @throws \Exception
    */
   protected function getMysqlData () {
-    throw new \Exception('Method should be overwritten by in child class.');
+    return $this->_data;
   }
 
   /**
-   * Самое часто встречающееся поле. Введено для удобства
-   * В некоторых случаях, например в случае таблицы многие ко многим,
-   *   может не использоваться
-   * @var int
+   * @param string $field
+   * @return mixed
+   * @throws \Exception
    */
-  protected $id;
+  public function __get ($field) {
+    if (array_key_exists($field, $this->_data)) {
+      return $this->_data[$field];
+    }
+    throw new \Exception("Unknown property $field");
+  }
+
+  /**
+   * @param string $field
+   * @param mixed $value
+   * @return $this
+   * @throws \Exception
+   */
+  public function __set ($field, $value) {
+    if (array_key_exists($field, $this->_data)) {
+      $this->_data[$field] = $value;
+      return $this;
+    }
+    throw new \Exception("Unknown property $field");
+  }
+
+  /**
+   * @var array
+   */
+  protected $_data;
 
   /**
    * @var BaseEntityManager
