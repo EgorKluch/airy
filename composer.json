@@ -1,6 +1,12 @@
 {
+  "name": "egorkluch/php-framework",
+  "description": "Framework for sites development. Based on Slim micro framework and other vendors",
+  "license": "MIT",
+  "keywords": ["framework", "slim"],
+  "version": "0.0.1",
+  "homepage": "https://github.com/EgorKluch/php-framework",
   "require": {
     "slim/slim": "2.*",
-    "egorkluch/mysql-query-builder": "dev-master"
+    "egorkluch/mysql-query-builder": "0.3"
   }
 }

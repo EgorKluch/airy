@@ -5,17 +5,21 @@
  */
 
 use Slim\Slim;
-use EgorKluch\MysqlQueryBuilder;
+
+define('ROOT_DIR', __DIR__ . '/');
 
 require 'vendor/autoload.php';
 
-$app = new Slim();
+$app = new Slim(array( 'debug' => false ));
 
-$conf = require __DIR__ . '/config/db.php';
-$app->db = new MysqlQueryBuilder($conf['db'], $conf['user'], $conf['pass'], $conf['host']);
+# Подгружаем дополнительные методы, расширяющие объект $app
+require 'core/bootstrap/initExtensionMethods.php';
+# Подгружаем библиотеку, предоставляющую удобный интерфейс для доступа к БД
+require 'core/bootstrap/initMysqlQueryBuilder.php';
+# Подгружаем Middleware класс для обработки ошибок
+require 'core/bootstrap/ErrorHandlerMiddleware.php';
 
-$app->get('/hello/:name', function ($name) {
-  echo "Hello, $name";
-});
+# Загружаем middleware в порядке, обратном их запуску
+$app->add(new ErrorHandlerMiddleware());
 
 $app->run();
