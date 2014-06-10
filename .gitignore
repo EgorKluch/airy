@@ -1,4 +1,5 @@
-vendor
-etc
+/vendor/
+/etc/
 
-composer.lock
+/composer.lock
+/config/db.php
