@@ -41,4 +41,16 @@ $app->get('/registration', function () use ($app) {
   $userManager->signUp($data);
 });
 
+$app->get('/signOut', function () use ($app) {
+  /** @var \Site\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  $userManager->signOut();
+});
+
+$app->get('/signIn', function () use ($app) {
+  /** @var \Site\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  $userManager->signIn('EgorKluch', 'password');
+});
+
 $app->run();
