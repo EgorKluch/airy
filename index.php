@@ -23,6 +23,12 @@ require 'site/bootstrap.php';
 # Загружаем middleware в порядке, обратном их запуску
 $app->add(new ErrorHandlerMiddleware());
 
+$app->get('/', function () use ($app) {
+  /** @var \Site\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  var_dump($userManager->currentUser);
+});
+
 $app->get('/registration', function () use ($app) {
   $data = array (
     'login' => 'EgorKluch',

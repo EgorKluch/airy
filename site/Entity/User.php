@@ -22,7 +22,7 @@ class User extends BaseEntity {
     if (!array_key_exists('id', $data)) $this->_data['id'] = null;
     if (!array_key_exists('token', $data)) $this->_data['token'] = null;
     if (!array_key_exists('roles', $data)) $this->_data['roles'] = 'user';
-    $this->roles = explode('|', $data['roles']);
+    $this->roles = explode('|', $this->roles);
   }
 
   /**

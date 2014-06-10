@@ -33,12 +33,13 @@ class UserManager extends BaseEntityManager {
 
     if (!$data) throw new \Exception('Wrong login or password');
 
+    $this->currentUser = $this->getByField('id', $data['id']);
+
     $token = $this->_createToken();
     $_SESSION['token'] = $token;
 
-    $values = array('token' => $token);
-    $where = array('id' => $data['id']);
-    $this->db->update($values, $where);
+    $this->currentUser->token = $token;
+    $this->currentUser->save();
   }
 
   /**
@@ -56,7 +57,6 @@ class UserManager extends BaseEntityManager {
       throw new \Exception('User with this email already exists');
     }
 
-    $user->token = $this->_createToken();
     $user->save();
 
     $this->signIn($user->login, $data['password']);

@@ -19,6 +19,7 @@ class BaseEntityManager {
      */
     $this->accessManager = null;
     $this->db = $app->db->assign($table);
+    $this->Entity = $Entity;
   }
 
   /**
@@ -75,7 +76,7 @@ class BaseEntityManager {
    */
   public function getByField ($field, $value, $rawData = false) {
     $where = array($field => $value);
-    $data = $this->db->select($where);
+    $data = $this->db->one($where);
     if ($rawData) return $data;
     return new $this->Entity($this, $data);
   }
