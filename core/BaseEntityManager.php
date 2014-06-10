@@ -75,7 +75,7 @@ class BaseEntityManager {
    */
   public function getByField ($field, $value, $rawData = false) {
     $where = array($field => $value);
-    $data = $this->bd->select($where);
+    $data = $this->db->select($where);
     if ($rawData) return $data;
     return new $this->Entity($this, $data);
   }

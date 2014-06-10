@@ -25,7 +25,8 @@ class BaseEntity {
       return $this->manager->db->update($where, $data);
     }
     # Добавляем новую сущность
-    return $this->manager->db->insert($data);
+    $this->id = $this->manager->db->insert($data);
+    return $this->id;
   }
 
   /**

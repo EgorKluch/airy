@@ -14,6 +14,7 @@ class SlimExtension extends Slim {
 
     $options = $this->getConfig('db');
     $this->db = new MysqlQueryBuilder($options);
+    $this->_managers = array();
   }
 
   /**
@@ -24,8 +25,21 @@ class SlimExtension extends Slim {
     return require ROOT_DIR . "config/$confName.php";
   }
 
+  public function regManager ($name, $className) {
+    $this->_managers[$name] = $className;
+  }
+
+  public function getManager ($name, $options = array()) {
+    if (is_string($this->_managers[$name])) {
+      $this->_managers[$name] = new $this->_managers[$name]($options);
+    }
+    return $this->_managers[$name];
+  }
+
   /**
    * @var MysqlQueryBuilder
    */
   public $db;
+
+  protected $_managers;
 }

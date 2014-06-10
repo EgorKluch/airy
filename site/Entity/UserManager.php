@@ -89,7 +89,7 @@ class UserManager extends BaseEntityManager {
     if (!$token) return;
 
     $where = array('token' => $token);
-    $data = $this->bd->one($where);
+    $data = $this->db->one($where);
 
     if (!$data) {
       unset($_SESSION['token']);

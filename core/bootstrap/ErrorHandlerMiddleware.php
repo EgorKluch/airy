@@ -2,15 +2,16 @@
 /**
  * @author EgorKluch (EgorKluch@gmail.com)
  * @date: 10.06.2014
- *
- * Внимание! Обрыботчик $app->error($errorHandler) не установлен,
- *    для каждого проекта реализуется самостоятельно!
- * Без обработчика будет вызываться метод $app->stop()
  */
 
+namespace Core;
+
+use Slim\Middleware;
 use Slim\Slim;
 
-class ErrorHandlerMiddleware extends \Slim\Middleware {
+global $app;
+
+class ErrorHandlerMiddleware extends Middleware {
   public function call() {
     try {
       $this->next->call();
@@ -20,3 +21,10 @@ class ErrorHandlerMiddleware extends \Slim\Middleware {
     }
   }
 }
+
+/**
+ * Default error handler
+ */
+$app->error(function ($e) {
+  throw $e;
+});
