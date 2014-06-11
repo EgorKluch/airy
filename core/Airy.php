@@ -26,6 +26,13 @@ class Airy extends Slim {
     $this->_managers = array();
   }
 
+  public function run () {
+    # Загружаем middleware в порядке, обратном их запуску
+    $this->add(new ErrorHandlerMiddleware());
+
+    parent::run();
+  }
+
   /**
    * @param string $confName
    * @return array
