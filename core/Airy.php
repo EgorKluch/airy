@@ -17,12 +17,9 @@ use EgorKluch\MysqlQueryBuilder;
  */
 class Airy extends Slim {
 
-  public function __construct() {
-    $options = $this->getConfig('slim');
-    parent::__construct($options);
-
-    $options = $this->getConfig('db');
-    $this->db = new MysqlQueryBuilder($options);
+  public function __construct($options) {
+    parent::__construct($options['slim']);
+    $this->db = new MysqlQueryBuilder($options['mysql']);
     $this->_managers = array();
   }
 

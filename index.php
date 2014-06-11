@@ -16,5 +16,3 @@ require 'vendor/autoload.php';
 require 'core/Airy.php';
 
 require 'core/bootstrap/index.php';
-
-require 'site/bootstrap.php';
