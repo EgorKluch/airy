@@ -1,5 +1,5 @@
 {
-  "name": "egorkluch/php-framework",
+  "name": "egorkluch/airy",
   "description": "Framework for sites development. Based on Slim micro framework and other vendors",
   "license": "MIT",
   "keywords": ["framework", "slim"],
