@@ -9,5 +9,10 @@
     "slim/slim": "2.*",
     "egorkluch/mysql-query-builder": "dev-master",
     "egorkluch/php-access-manager": "dev-master"
+  },
+  "autoload": {
+    "files": [
+      "index.php"
+    ]
   }
 }

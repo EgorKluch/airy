@@ -38,7 +38,7 @@ class Airy extends Slim {
    * @return array
    */
   public function getConfig ($confName) {
-    return require ROOT_DIR . "config/$confName.php";
+    return require AIRY_ROOT_DIR . "config/$confName.php";
   }
 
   public function regManager ($name, $className) {
