@@ -4,7 +4,7 @@
  * @date: 10.06.2014
  */
 
-namespace Site\Entity;
+namespace Site\User\Entity;
 
 use Core\BaseEntityManager;
 

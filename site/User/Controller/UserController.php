@@ -4,9 +4,9 @@
  * @date: 11.06.2014
  */
 
-namespace Site\Controller;
+namespace Site\User\Controller;
 
-use Site\Entity\UserManager;
+use Site\User\Entity\UserManager;
 
 class UserController {
   public function signUp () {

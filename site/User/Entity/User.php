@@ -6,7 +6,7 @@
  * Fields: id, login, email, password, session, roles
  */
 
-namespace Site\Entity;
+namespace Site\User\Entity;
 
 use Core\BaseEntityManager;
 use Core\BaseEntity;
