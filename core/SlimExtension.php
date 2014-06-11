@@ -36,6 +36,17 @@ class SlimExtension extends Slim {
     return $this->_managers[$name];
   }
 
+  public function regController ($name, $className) {
+    $this->_controllers[$name] = $className;
+  }
+
+  public function getController ($name) {
+    if (is_string($this->_controllers[$name])) {
+      $this->_controllers[$name] = new $this->_controllers[$name]();
+    }
+    return $this->_controllers[$name];
+  }
+
   public function sendAjax ($data, $status = 200) {
     $data = json_encode($data);
     $this->send($data, $status);
@@ -45,10 +56,26 @@ class SlimExtension extends Slim {
     $this->halt($status, $data);
   }
 
+  public function get ($route, $action, $cond = array(), $name = '') {
+    $this->addRoute('get', $route, $action, $cond, $name);
+  }
+
   /**
    * @var MysqlQueryBuilder
    */
   public $db;
 
+  protected function addRoute ($method, $route, $action, $cond, $name) {
+    parent::$method($route, function () use ($action) {
+      global $app;
+      $action = explode(':', $action);
+      $controller = $app->getController($action[0]);
+      $action = $action[1];
+      $controller->$action(func_get_args());
+    })->conditions($cond)->name($name);
+  }
+
   protected $_managers;
+
+  protected $_controllers;
 }

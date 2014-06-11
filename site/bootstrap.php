@@ -18,3 +18,6 @@ spl_autoload_register(function ($class) {
 });
 
 $app->regManager('user', 'Site\User\Entity\UserManager');
+$app->regController('user', 'Site\User\Controller\UserController');
+
+require __DIR__ . '/routes.php';
