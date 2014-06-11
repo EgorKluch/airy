@@ -60,6 +60,18 @@ class SlimExtension extends Slim {
     $this->addRoute('get', $route, $action, $cond, $name);
   }
 
+  public function post ($route, $action, $cond = array(), $name = '') {
+    $this->addRoute('post', $route, $action, $cond, $name);
+  }
+
+  public function put ($route, $action, $cond = array(), $name = '') {
+    $this->addRoute('put', $route, $action, $cond, $name);
+  }
+
+  public function delete ($route, $action, $cond = array(), $name = '') {
+    $this->addRoute('delete', $route, $action, $cond, $name);
+  }
+
   /**
    * @var MysqlQueryBuilder
    */
