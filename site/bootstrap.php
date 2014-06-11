@@ -17,4 +17,4 @@ spl_autoload_register(function ($class) {
   }
 });
 
-$app->regManager('user', 'Site\Entity\UserManager');
+$app->regManager('user', 'Site\User\Entity\UserManager');

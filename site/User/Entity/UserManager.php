@@ -10,7 +10,7 @@ use Core\BaseEntityManager;
 
 class UserManager extends BaseEntityManager {
   public function __construct() {
-    parent::__construct('user', 'Site\Entity\User');
+    parent::__construct('user', 'Site\User\Entity\User');
     $this->_initCurrentUser();
   }
 

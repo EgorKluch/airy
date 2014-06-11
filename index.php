@@ -23,4 +23,34 @@ require 'site/bootstrap.php';
 # Загружаем middleware в порядке, обратном их запуску
 $app->add(new ErrorHandlerMiddleware());
 
+$app->get('/', function () use ($app) {
+  /** @var \Site\User\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  var_dump($userManager->currentUser);
+});
+
+$app->get('/registration', function () use ($app) {
+  $data = array (
+    'login' => 'EgorKluch',
+    'password' => 'password',
+    'email' => 'EgorKluch@gmail.com',
+    'roles' => 'user'
+  );
+  /** @var \Site\User\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  $userManager->signUp($data);
+});
+
+$app->get('/signOut', function () use ($app) {
+  /** @var \Site\User\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  $userManager->signOut();
+});
+
+$app->get('/signIn', function () use ($app) {
+  /** @var \Site\User\Entity\UserManager $userManager */
+  $userManager = $app->getManager('user');
+  $userManager->signIn('EgorKluch', 'password');
+});
+
 $app->run();
