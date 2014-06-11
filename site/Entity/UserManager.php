@@ -43,7 +43,7 @@ class UserManager extends BaseEntityManager {
   }
 
   /**
-   * @param string $data
+   * @param array $data
    * @throws \Exception
    */
   public function signUp ($data) {
@@ -58,8 +58,6 @@ class UserManager extends BaseEntityManager {
     }
 
     $user->save();
-
-    $this->signIn($user->login, $data['password']);
   }
 
   public function signOut () {

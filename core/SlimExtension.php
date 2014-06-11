@@ -36,6 +36,15 @@ class SlimExtension extends Slim {
     return $this->_managers[$name];
   }
 
+  public function sendAjax ($data, $status = 200) {
+    $data = json_encode($data);
+    $this->send($data, $status);
+  }
+
+  public function send ($data, $status = 200) {
+    $this->halt($status, $data);
+  }
+
   /**
    * @var MysqlQueryBuilder
    */
