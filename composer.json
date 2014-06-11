@@ -4,7 +4,7 @@
   "license": "MIT",
   "keywords": ["framework", "slim"],
   "version": "0.0.2",
-  "homepage": "https://github.com/EgorKluch/php-framework",
+  "homepage": "https://github.com/EgorKluch/airy",
   "require": {
     "slim/slim": "2.*",
     "egorkluch/mysql-query-builder": "dev-master",
