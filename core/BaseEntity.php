@@ -4,8 +4,14 @@
  * @date: 09.06.2014
  */
 
-namespace Core;
+namespace Airy;
 
+/**
+ * Class BaseEntity
+ * @package Airy
+ *
+ * @property int $id
+ */
 class BaseEntity {
   /**
    * @param BaseEntityManager $manager

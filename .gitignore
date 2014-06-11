@@ -1,6 +1,7 @@
 /vendor/
 /etc/
 /.idea/
+/site/
 
 /composer.lock
 /config/db.php

@@ -4,12 +4,10 @@
  * @date: 10.06.2014
  */
 
-namespace Core;
+namespace Airy;
 
 use Slim\Middleware;
 use Slim\Slim;
-
-global $app;
 
 class ErrorHandlerMiddleware extends Middleware {
   public function call() {
@@ -21,6 +19,8 @@ class ErrorHandlerMiddleware extends Middleware {
     }
   }
 }
+
+$app = Airy::getInstance();
 
 /**
  * Default error handler

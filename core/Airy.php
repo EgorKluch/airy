@@ -4,10 +4,19 @@
  * @date: 10.06.2014
  */
 
+namespace Airy;
+
 use Slim\Slim;
 use EgorKluch\MysqlQueryBuilder;
 
-class SlimExtension extends Slim {
+/**
+ * Class Airy
+ * @package Airy
+ *
+ * @method static Airy getInstance()
+ */
+class Airy extends Slim {
+
   public function __construct() {
     $options = $this->getConfig('slim');
     parent::__construct($options);
@@ -79,9 +88,8 @@ class SlimExtension extends Slim {
 
   protected function addRoute ($method, $route, $action, $cond, $name) {
     parent::$method($route, function () use ($action) {
-      global $app;
       $action = explode(':', $action);
-      $controller = $app->getController($action[0]);
+      $controller = $this->getController($action[0]);
       $action = $action[1];
       $controller->$action(func_get_args());
     })->conditions($cond)->name($name);

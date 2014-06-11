@@ -6,7 +6,7 @@
 
 spl_autoload_register(function ($class) {
   $parts = explode('\\', $class);
-  if ('Core' === $parts[0]) {
+  if ('Airy' === $parts[0]) {
     $parts[0] = 'core';
     $path = ROOT_DIR . implode('/', $parts) . '.php';
     if (is_file($path)) {

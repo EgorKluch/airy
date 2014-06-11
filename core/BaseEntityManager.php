@@ -4,14 +4,14 @@
  * @date: 10.06.2014
  */
 
-namespace Core;
+namespace Airy;
 
 use EgorKluch\AccessManager;
 use EgorKluch\AssignMysqlQueryBuilder;
 
 class BaseEntityManager {
   public function __construct($table, $Entity) {
-    global $app;
+    $app = Airy::getInstance();
     /*
      * Если $this->accessManager === null, accessManager не инициализирован.
      * Таким образом accessManager инициализируется только для сущностей,
